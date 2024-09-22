@@ -1,109 +1,78 @@
 extends layout
 
+block head
+  title Snagpro Inspector
+  link(rel='stylesheet', href='/css/hi.css') 
+  link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap', rel='stylesheet')
+
 block content
-  //- Inline CSS for a polished design
-  style.
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f4f8;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-      padding: 40px 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-bottom: 5px solid #007bff;
-      text-align: left;
-    }
-    .logo {
-      max-width: 200px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin: 10px 0;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-    section {
-      padding: 40px 20px;
-      background-color: white;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    .container {
-      display: flex;
-      justify-content: space-between;
-      padding: 40px 20px;
-      margin: 20px 0;
-    }
-    .text-section {
-      flex: 1;
-      padding-right: 20px;
-    }
-    .image-section {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .home-image {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%; /* Circle shape */
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #007bff;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #fff;
-      margin-top: 20px;
-      border-top: 5px solid #007bff;
-      font-size: 1rem;
-    }
-    .social-button {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
-    }
-
   //- Header Section
-  header
-    .text-section
-      h1 Welcome to Snagging Inspector
-      p Ensuring your new home is free of defects and ready to move in.
+
+  main
+    //- Hero Section
+    section.hero(style='display: flex; align-items: center; justify-content: space-between; padding: 60px 0;')
+      .logo-container
+        img(src='images/logo.jpeg', alt='Snagpro Inspector Logo', class='hero-logo')
+      .text-container(style='text-align: left; margin-left: 20px;')
+        h1 Welcome to Snagpro Inspector
+        h4 Ensuring your new home is defect-free and ready for you.
+      button.cta-button(type='button', onclick="window.location.href='/booking'") Book Now
+
+    //- About Section
+    section.about
+      .container
+        section.text-section
+          
+          p At <strong>Snagging Inspector</strong>, we are dedicated to providing top-notch inspection services for new-build homes and commercial properties. With years of experience in the construction and engineering sectors, we ensure your property meets the highest standards of quality and safety.
+          p Led by a <strong>NVQ Level 6 Engineer</strong> with a specialization in <strong>heating and ventilation</strong>, we bring a wealth of knowledge to every project. As an <strong>NHBC Approved Snagging Inspector</strong> and <strong>CITB Approved Engineer</strong>, we are committed to delivering professional, thorough, and detailed snagging inspections to identify any defects or issues before they become bigger problems.
+          p Whether you're a homeowner, developer, or property manager, we provide peace of mind by ensuring your property is in the best possible condition. Trust us to help you safeguard your investment with our expert inspection services.
+
+          h3 Our Qualifications:
+          ul
+            li NVQ Level 6 Engineer
+            li Heating and Ventilation Specialist
+            li NHBC Approved Snagging Inspector
+            li CITB Approved Engineer
+
+          p Your satisfaction and the quality of your property are our top priorities. Let us handle the details, so you can enjoy your home or commercial space with confidence.
+
+        .image-section
+          img(src='images/home-interior.jpeg', alt='Beautiful Home Interior', class='home-image')
+
+    //- Services Section
+    section.services(id='services')
+      h2 Our Services
+      .container
+        .service-card
+          h3 Inspections
+          p Thorough inspections to guarantee your home meets safety standards.
+        .service-card
+          h3 Reporting
+          p Detailed reports pinpointing any issues and necessary actions.
+        .service-card
+          h3 Consultancy
+          p Expert guidance on maintaining and enhancing your home’s safety.
+
+    //- Testimonials Section
+    section.testimonials(id='testimonials')
+      h2 What Our Clients Say
+      .container
+        .testimonial
+          p "Snagpro Inspector made my home buying experience stress-free. Highly recommend!" - Jane D.
+        .testimonial
+          p "Professional and thorough. I felt safe moving into my new home!" - Mark S.
+        .testimonial
+          p "Excellent service and very friendly team. Would use again!" - Sarah T.
+
+    //- Contact Section
+    section.contact(id='contact')
+      h2 Get in Touch
       
-    .image-section
-      img(src='images/home-interior.jpeg', alt='Beautiful Home Interior', class='home-image')
-
-  //- Main Section
-  section
-
-      .text-section
-        p Our team is led by an NVQ Level 6 Engineer specializing in heating, ventilation, and gas safety. We are fully Gas Safe certified, ensuring your home’s systems are safe and compliant.
-        p Recognized by the NHBC and CITB, we adhere to rigorous inspection standards for peace of mind.
+      button.cta-button(type='button', onclick="window.location.href='/contact'") Contact Us
 
   //- Footer Section
   footer
-    p © 2024 Snagging Inspector. All Rights Reserved.
+    p © 2024 Snagpro Inspector. All Rights Reserved.
     p Follow us on:
       a(href='https://www.facebook.com', class='social-button') Facebook
       a(href='https://www.instagram.com', class='social-button') Instagram

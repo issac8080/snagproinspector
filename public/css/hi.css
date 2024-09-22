@@ -1,39 +1,168 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  nav {
-    background-color: #081f36;
-    padding: 15px 20px;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  nav li {
-    display: inline;
-  }
-  
-  nav a {
-    color: #ffffff; /* White text for contrast */
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  nav a:hover {
-    background-color: #0a2a47; /* A lighter shade for hover effect */
-    color: #ffcc00; /* A contrasting color for hover text */
-  }
-  
-  block content {
+    background-color: #F5F5F0;
+    color: #4E3B31;
+    transition: background-color 0.5s ease;
+}
+
+header {
+    background-color: #fff;
     padding: 20px;
-  }
-  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 80px 30px;
+    background: linear-gradient(to right, #4b3126, #4b3126);
+    color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    height: 200px;
+    justify-content: space-between;
+}
+
+.hero-logo {
+    max-width: 120px;
+    height: auto;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.text-container {
+    text-align: justify;
+    margin-left: 20px;
+}
+
+h1, h2, h3 {
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2, h3 {
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1595px;
+    border-radius: 30px;
+    padding: 40px 20px;
+    background-color: #4b3126;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease forwards;
+    text-align: center;
+}
+
+.text-section, .image-section, .service-card, .testimonial {
+    flex: 1 1 calc(45% - 40px); /* Subtracting margins */
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.text-section:hover, .image-section:hover, .service-card:hover, .testimonial:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-section img {
+    max-width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-section img:hover {
+    transform: scale(1.05);
+}
+
+.cta-button {
+    padding: 12px 24px;
+    background-color: #fff;
+    color: #3B2F2F;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.cta-button:hover {
+    background-color: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 40px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#services, #testimonials, #contact {
+    padding: 40px 20px;
+    background-color: #4b3126;
+    border-radius: 30px;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease forwards;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .text-section, .image-section, .service-card, .testimonial {
+        flex: 1 1 100%; /* Stack on smaller screens */
+        margin: 20px 0; /* Full width with top and bottom margins */
+    }
+
+    .hero {
+        flex-direction: column; /* Stack items in hero section on mobile */
+        align-items: center; /* Center align for mobile */
+    }
+
+    .text-container {
+        margin-left: 0; /* Remove left margin on mobile */
+        text-align: center; /* Center text on mobile */
+    }
+
+    .container {
+        padding: 20px; /* Adjust padding for mobile */
+    }
+
+    header, footer, #services, #testimonials, #contact {
+        margin: 20px; /* Ensure consistent margin on mobile */
+    }
+}

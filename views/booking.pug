@@ -2,60 +2,61 @@ extends layout
 
 block content
   .contact.form-only
-    .container
-      .form-header
-        h1 Booking Enquiry
-      .contact-form
-        form(action='/booking', method='POST', aria-label='Booking Form', novalidate='novalidate')
-          .form-group-two-columns
+    .container.outer-container(style='background-color: #4b3126; padding: 20px; border-radius: 30px;') 
+      .container
+        .form-header
+          h1 Booking Enquiry
+        .contact-form
+          form(action='/booking', method='POST', aria-label='Booking Form', novalidate='novalidate')
+            .form-group-two-columns
+              .form-group
+                label(for='fullname') Full Name*
+                input(type='text', name='fullname', required, class='form-control')
+              .form-group
+                label(for='phone') Contact Number*
+                input(type='tel', name='phone', required, class='form-control')
+            .form-group-two-columns
+              .form-group
+                label(for='email') Email Address*
+                input(type='email', name='email', required, class='form-control')
+              .form-group
+                label(for='address') Address of New Home*
+                textarea(name='address', required, rows='4', class='form-control')
             .form-group
-              label(for='fullname') Full Name*
-              input(type='text', name='fullname', required, class='form-control')
-            .form-group
-              label(for='phone') Contact Number*
-              input(type='tel', name='phone', required, class='form-control')
-          .form-group-two-columns
-            .form-group
-              label(for='email') Email Address*
-              input(type='email', name='email', required, class='form-control')
-            .form-group
-              label(for='address') Address of New Home*
-              textarea(name='address', required, rows='4', class='form-control')
-          .form-group
-            label(for='property_type') Property Type*
-            select(name='property_type', required, class='form-control')
-              option(value='') Please Select...
-              option(value='1-2 Bedroom Property £349') 1-2 Bedroom Property £349
-              option(value='3 Bedroom Property £399') 3 Bedroom Property £399
-              option(value='4 Bedroom Property £449') 4 Bedroom Property £449
-              option(value='5 Bedroom Property £499') 5 Bedroom Property £499
-          .form-group
-            label Optional Extras
-            .form-group-checkbox
-              input(type='checkbox', name='extras[]', id='extras1', value='Cavity £119')
-              label(for='extras1') Cavity £119
-            .form-group-checkbox
-              input(type='checkbox', name='extras[]', id='extras2', value='Thermal £349')
-              label(for='extras2') Thermal (only available in winter months) £349
-          .form-group-two-columns
-            .form-group
-              label(for='inspection_date') Inspection Date*
-              input(type='date', name='inspection_date', required, class='form-control')
-            .form-group
-              label(for='flex_date') Is this date flexible?*
-              select(name='flex_date', required, class='form-control')
+              label(for='property_type') Property Type*
+              select(name='property_type', required, class='form-control')
                 option(value='') Please Select...
-                option(value='Yes') Yes
-                option(value='No') No
-          .form-group
-            label(for='message') Additional Information
-            textarea(name='message', rows='4', class='form-control')
-          .consent-container
-            .consent-text
-              p This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-              p When you fill in this form, we'll temporarily store your data so we can respond to your enquiry. You can unsubscribe at any time by clicking the link at the bottom of any of our emails. For full details, please see our Privacy Policy.
-          .form-group-checkbox
-            input(type='checkbox', name='consent', id='consent')
-            label(for='consent') I consent to being added to your email marketing list.
-          .form-group-submit
-            input(type='submit', value='Send Enquiry', class='btn btn-submit')
+                option(value='1-2 Bedroom Property £349') 1-2 Bedroom Property £349
+                option(value='3 Bedroom Property £399') 3 Bedroom Property £399
+                option(value='4 Bedroom Property £449') 4 Bedroom Property £449
+                option(value='5 Bedroom Property £499') 5 Bedroom Property £499
+            .form-group
+              label Optional Extras
+              .form-group-checkbox
+                input(type='checkbox', name='extras[]', id='extras1', value='Cavity £119')
+                label(for='extras1') Cavity £119
+              .form-group-checkbox
+                input(type='checkbox', name='extras[]', id='extras2', value='Thermal £349')
+                label(for='extras2') Thermal (only available in winter months) £349
+            .form-group-two-columns
+              .form-group
+                label(for='inspection_date') Inspection Date*
+                input(type='date', name='inspection_date', required, class='form-control')
+              .form-group
+                label(for='flex_date') Is this date flexible?*
+                select(name='flex_date', required, class='form-control')
+                  option(value='') Please Select...
+                  option(value='Yes') Yes
+                  option(value='No') No
+            .form-group
+              label(for='message') Additional Information
+              textarea(name='message', rows='4', class='form-control')
+            .consent-container
+              .consent-text
+                p This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                p When you fill in this form, we'll temporarily store your data so we can respond to your enquiry. You can unsubscribe at any time by clicking the link at the bottom of any of our emails. For full details, please see our Privacy Policy.
+            .form-group-checkbox
+              input(type='checkbox', name='consent', id='consent')
+              label(for='consent') I consent to being added to your email marketing list.
+            .form-group-submit
+              input(type='submit', value='Send Enquiry', class='btn btn-submit')
