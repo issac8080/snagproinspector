@@ -16,13 +16,13 @@ app.set('views', path.join(__dirname, 'views'));
 
 // MySQL Database Connection
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',  // Use the environment variable or default to localhost
-    user: process.env.DB_USER || 'root',      // Use the environment variable or default to 'root'
-    password: process.env.DB_PASSWORD || 'Issac@2003', // Use the environment variable or default to your password
-    database: process.env.DB_DATABASE || 'booking_db'  // Use the environment variable or default to 'booking_db'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'Issac@2003',
+    database: process.env.DB_DATABASE || 'booking_db'
 });
 
-db.connect((err) => {
+connection.connect((err) => {
     if (err) throw err;
     console.log('MySQL connected...');
 });
@@ -31,8 +31,8 @@ db.connect((err) => {
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'issacsunnycvn12a@gmail.com', // Your email address
-        pass: 'bfiomnejefbnttwp'                // Your email password or app password
+        user: 'issacsunnycvn12a@gmail.com',
+        pass: 'bfiomnejefbnttwp' // Consider using an app password for security
     }
 });
 
@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
 app.get('/booking', (req, res) => {
     res.render('booking');
 });
+
 app.get('/contact', (req, res) => {
     res.render('contact');
 });
@@ -52,33 +53,28 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
-
 // Booking form submission
 app.post('/booking', (req, res) => {
     const { fullname, phone, email, address, property_type, other, extras, inspection_date, flex_date, message } = req.body;
 
-    // Log the request body for debugging
     console.log(req.body);
 
-    // Check for required fields
     if (!fullname || !phone || !email || !address || !inspection_date || !flex_date) {
         return res.status(400).send('Please fill in all required fields.');
     }
 
-    // Prepare extras
     const extrasList = Array.isArray(req.body['extras[]']) ? req.body['extras[]'].join(', ') : '';
 
     const query = 'INSERT INTO bookings (fullname, phone, email, address, property_type, other, extras, inspection_date, flex_date, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    db.query(query, [fullname, phone, email, address, property_type, other, extrasList, inspection_date, flex_date, message], (err, result) => {
+    connection.query(query, [fullname, phone, email, address, property_type, other, extrasList, inspection_date, flex_date, message], (err, result) => {
         if (err) {
             console.error('Error inserting data: ', err);
             return res.status(500).send('Error saving data. Please try again later.');
         }
 
-        // Prepare email content
         const mailOptions = {
-            from: 'issacsunnycvn12a@gmail.com', // sender address
-            to: 'issacsunnycvn12a@gmail.com', // your email address to receive the booking details
+            from: 'issacsunnycvn12a@gmail.com',
+            to: 'issacsunnycvn12a@gmail.com',
             subject: 'New Booking Submission',
             text: `A new booking has been submitted!\n\n` +
                   `Full Name: ${fullname}\n` +
@@ -93,7 +89,6 @@ app.post('/booking', (req, res) => {
                   `Message: ${message}\n`
         };
 
-        // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.error('Error sending email: ', error);
