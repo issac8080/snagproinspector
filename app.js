@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
@@ -14,11 +15,11 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // MySQL Database Connection
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Issac@2003', // Use environment variable in production
-    database: 'booking_db',  // Change to your actual database name
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST || 'localhost',  // Use the environment variable or default to localhost
+    user: process.env.DB_USER || 'root',      // Use the environment variable or default to 'root'
+    password: process.env.DB_PASSWORD || 'Issac@2003', // Use the environment variable or default to your password
+    database: process.env.DB_DATABASE || 'booking_db'  // Use the environment variable or default to 'booking_db'
 });
 
 db.connect((err) => {
