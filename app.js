@@ -15,10 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Issac@2003', // Use environment variable in production
-    database: 'booking_db',  // Change to your actual database name
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
@@ -30,8 +30,8 @@ db.connect((err) => {
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'testissac2024@gmail.com', // Your email address
-        pass: 'asdrajgpibsqaxfa'                // Your email password or app password
+        user: 'issacsunnycvn12a@gmail.com', // Your email address
+        pass: 'bfiomnejefbnttwp'                // Your email password or app password
     }
 });
 
@@ -76,8 +76,8 @@ app.post('/booking', (req, res) => {
 
         // Prepare email content
         const mailOptions = {
-            from: 'testissac2024@gmail.com', // sender address
-            to: 'testissac2024@gmail.com', // your email address to receive the booking details
+            from: 'issacsunnycvn12a@gmail.com', // sender address
+            to: 'issacsunnycvn12a@gmail.com', // your email address to receive the booking details
             subject: 'New Booking Submission',
             text: `A new booking has been submitted!\n\n` +
                   `Full Name: ${fullname}\n` +
