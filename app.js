@@ -16,10 +16,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // MySQL Database Connection
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'Issac@2003',
-    database: process.env.DB_DATABASE || 'booking_db'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER ,
+    password: process.env.DB_PASSWORD ,
+    database: process.env.DB_DATABASE 
 });
 
 connection.connect((err) => {
