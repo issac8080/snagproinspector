@@ -15,10 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: 'localhost',
+    user: 'root',
+    password: 'Issac@2003', // Use environment variable in production
+    database: 'booking_db',  // Change to your actual database name
 });
 
 db.connect((err) => {
